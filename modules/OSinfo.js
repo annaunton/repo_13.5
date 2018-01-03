@@ -1,5 +1,6 @@
 var os = require('os');
-var calcTime = require('../modules/calcTime');
+var calcTime = require('./calcTime');
+var colors = require('colors');
 
 function getOSinfo () {
 	var type = os.type()
@@ -12,12 +13,12 @@ function getOSinfo () {
 	var cpu = os.cpus()[0].model;
 	var userInfo = os.userInfo();
 
-	console.log('System: ' , type);
-	console.log('Release: ' , release);
-	console.log('CPU model: ' , cpu);
+	console.log('System: '.green , type);
+	console.log('Release: '.yellow , release);
+	console.log('CPU model: '.blue , cpu);
 	calcTime.print();
-	console.log('User name:', userInfo.username);
-	console.log('Home dir:', userInfo.homedir);
+	console.log('User name:'.magenta, userInfo.username);
+	console.log('Home dir:'.gray, userInfo.homedir);
 }
 
 exports.print = getOSinfo;
